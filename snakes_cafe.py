@@ -43,4 +43,6 @@ Blood of the Innocent
             '''
         )
         user_input = input('>   ')
+        if user_input == 'quit':
+            break
         print('\n** Your order of {0} have been added to your meal **'.format(user_input))
