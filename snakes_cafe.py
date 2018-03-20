@@ -1,4 +1,19 @@
 if __name__ == '__main__':
+    orders = {
+        'wings': 0,
+        'cookies': 0,
+        'spring rolls': 0,
+        'salmon': 0,
+        'steak': 0,
+        'meat tornado': 0,
+        'a literal garden': 0,
+        'ice cream': 0,
+        'cake': 0,
+        'pie': 0,
+        'coffee': 0,
+        'tea': 0,
+        'blood of the innocent': 0,
+    }
     print(
         '''
 **************************************
@@ -45,4 +60,8 @@ Blood of the Innocent
         user_input = input('>   ')
         if user_input == 'quit':
             break
-        print('\n** Your order of {0} have been added to your meal **'.format(user_input))
+        if user_input.lower() in orders.keys():
+            orders[user_input.lower()] += 1
+            print('\n** {1} order of {0} have been added to your meal **'.format(user_input, orders[user_input.lower()]))
+        else:
+            print('\nSorry we don\'t carry', user_input)
