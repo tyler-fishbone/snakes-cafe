@@ -1,19 +1,70 @@
-if __name__ == '__main__':
-    orders = {
-        'wings': 0,
-        'cookies': 0,
-        'spring rolls': 0,
-        'salmon': 0,
-        'steak': 0,
-        'meat tornado': 0,
-        'a literal garden': 0,
-        'ice cream': 0,
-        'cake': 0,
-        'pie': 0,
-        'coffee': 0,
-        'tea': 0,
-        'blood of the innocent': 0,
+
+menu = {
+        'wings': {
+            'category': 'appetizers',
+            'orders': 0,
+        },
+        'cookies': {
+            'category': 'appetizers',
+            'orders': 0,
+        },
+        'spring rolls': {
+            'category': 'appetizers',
+            'orders': 0,
+        },
+        'salmon': {
+            'category': 'entrees',
+            'orders': 0,
+        },
+        'steak': {
+            'category': 'entrees',
+            'orders': 0,
+        },
+        'meat tornado': {
+            'category': 'entrees',
+            'orders': 0,
+        },
+        'a literal garden': {
+            'category': 'entrees',
+            'orders': 0,
+        },
+        'ice cream': {
+            'category': 'desserts',
+            'orders': 0,
+        },
+        'cake': {
+            'category': 'desserts',
+            'orders': 0,
+        },
+        'pie': {
+            'category': 'desserts',
+            'orders': 0,
+        },
+        'coffee': {
+            'category': 'drinks',
+            'orders': 0,
+        },
+        'tea': {
+            'category': 'drinks',
+            'orders': 0,
+        },
+        'blood of the innocent': {
+            'category': 'drinks',
+            'orders': 0,
+        },
     }
+
+
+def main():
+    print_header()
+    print_appetizers()
+    print_entrees()
+    print_desserts()
+    print_drinks()
+    user_prompt()
+
+
+def print_header():
     print(
         '''
 **************************************
@@ -22,33 +73,59 @@ if __name__ == '__main__':
 **                                  **
 ** To quit at any time, type "quit" **
 **************************************
-
-Appetizers
-----------
-Wings
-Cookies
-Spring Rolls
-
-Entrees
--------
-Salmon
-Steak
-Meat Tornado
-A Literal Garden
-
-Desserts
---------
-Ice Cream
-Cake
-Pie
-
-Drinks
-------
-Coffee
-Tea
-Blood of the Innocent
         '''
     )
+
+
+def print_appetizers():
+    print(
+        '''
+Appetizers
+----------
+        '''
+    )
+    for key, value in menu.items():
+        if value['category'] == 'appetizers':
+            print(key)
+
+
+def print_entrees():
+    print(
+        '''
+Entrees
+-------
+        '''
+    )
+    for key, value in menu.items():
+        if value['category'] == 'entrees':
+            print(key)
+
+
+def print_desserts():
+    print(
+        '''
+Desserts
+-------
+        '''
+    )
+    for key, value in menu.items():
+        if value['category'] == 'desserts':
+            print(key)
+
+    
+def print_drinks():
+    print(
+        '''
+Drinks
+-------
+        '''
+    )
+    for key, value in menu.items():
+        if value['category'] == 'drinks':
+            print(key)
+
+
+def user_prompt():    
     while True:
         print(
             '''
@@ -60,8 +137,12 @@ Blood of the Innocent
         user_input = input('>   ')
         if user_input == 'quit':
             break
-        if user_input.lower() in orders.keys():
-            orders[user_input.lower()] += 1
-            print('\n** {1} order of {0} have been added to your meal **'.format(user_input, orders[user_input.lower()]))
+        if user_input.lower() in menu.keys():
+            menu[user_input.lower()]['orders'] += 1
+            print('\n** {1} order of {0} have been added to your meal **'.format(user_input, menu[user_input.lower()]['orders']))
         else:
             print('\nSorry we don\'t carry', user_input)
+
+
+if __name__ == '__main__':
+    main()
