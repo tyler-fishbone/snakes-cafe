@@ -289,14 +289,13 @@ The Snakes Cafe
 
 Order #{}
 ===========================================
+
 """.format(user_uuid)
 
-# Wings x1                              $2.00
-# Spring Rolls x3                       $7.50
-# Steak x1                             $12.00
-# Blood of the Innocent x1            $666.66
-
-
+    items_ordered = create_list_of_items_ordered()
+    for key in items_ordered:
+        order_amount_string = key + ' x' + str(menu[key]['orders'])
+        reciept_string += '{:<32s}{:>11s}\n'.format(order_amount_string, '${:.2f}'.format(menu[key]['price']))
 
     reciept_string += '\n-------------------------------------------\n'
     reciept_string += '{:<22s}{:>21s}\n'.format('Subtotal', '${:.2f}'.format(subtotal))
@@ -308,7 +307,3 @@ Order #{}
 
 if __name__ == '__main__':
     main()
-
-
-# str += '{:<22s}\t\t{}\n'.format(item.title(), '${:.2f}'.format(data[0]))
-# {:<26s}{:>12s}
