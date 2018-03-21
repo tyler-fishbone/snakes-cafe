@@ -290,26 +290,20 @@ The Snakes Cafe
 Order #{}
 ===========================================
 """.format(user_uuid)
-    reciept_string += '\n-------------------------------------------\n'
 
-    reciept_string += '{:<22s}{:>21s}\n'.format('Subtotal', '${:.2f}'.format(subtotal))
-    reciept_string += '{:<22s}{:>21s}\n'.format('Sales Tax', '${:.2f}'.format(get_sales_tax(subtotal)))
-    reciept_string += '---------\n'
-    reciept_string += '{:<22s}{:>21s}\n'.format('Total Due', '${:.2f}'.format(subtotal + get_sales_tax(subtotal)))
-    reciept_string += '*******************************************\n'
 # Wings x1                              $2.00
 # Spring Rolls x3                       $7.50
 # Steak x1                             $12.00
 # Blood of the Innocent x1            $666.66
 
-#     bottom_of_reciept = """
-# -------------------------------------------
-# Subtotal           {:{align}{width}.{prec}f}
-# Sales Tax                            $66.07
-# ---------
-# Total Due                           $754.23
-# *******************************************
-#     """.format(subtotal, align='>', width=24, prec=2)
+
+
+    reciept_string += '\n-------------------------------------------\n'
+    reciept_string += '{:<22s}{:>21s}\n'.format('Subtotal', '${:.2f}'.format(subtotal))
+    reciept_string += '{:<22s}{:>21s}\n'.format('Sales Tax', '${:.2f}'.format(get_sales_tax(subtotal)))
+    reciept_string += '---------\n'
+    reciept_string += '{:<22s}{:>21s}\n'.format('Total Due', '${:.2f}'.format(subtotal + get_sales_tax(subtotal)))
+    reciept_string += '*******************************************\n'
     return reciept_string
 
 if __name__ == '__main__':
