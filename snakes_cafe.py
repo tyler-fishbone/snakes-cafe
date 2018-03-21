@@ -1,127 +1,158 @@
 
 menu = {
-        'wings': {
-            'category': 'appetizers',
-            'orders': 0,
-        },
-        'cookies': {
-            'category': 'appetizers',
-            'orders': 0,
-        },
-        'spring rolls': {
-            'category': 'appetizers',
-            'orders': 0,
-        },
-        'brussel sprouts': {
-            'category': 'appetizers',
-            'orders': 0,
-        },
-        'brains': {
-            'category': 'appetizers',
-            'orders': 0,
-        },
-        '6 compliments': {
-            'category': 'appetizers',
-            'orders': 0,
-        },
-        'salmon': {
-            'category': 'entrees',
-            'orders': 0,
-        },
-        'steak': {
-            'category': 'entrees',
-            'orders': 0,
-        },
-        'meat tornado': {
-            'category': 'entrees',
-            'orders': 0,
-        },
-        'a literal garden': {
-            'category': 'entrees',
-            'orders': 0,
-        },
-        'cheeseburger': {
-            'category': 'entrees',
-            'orders': 0,
-        },
-        'lasagne': {
-            'category': 'entrees',
-            'orders': 0,
-        },
-        'cottage cheese': {
-            'category': 'sides',
-            'orders': 0,
-        },
-        'apple sauce': {
-            'category': 'sides',
-            'orders': 0,
-        },
-        'over-ripe banana': {
-            'category': 'sides',
-            'orders': 0,
-        },
-        'freedom fries': {
-            'category': 'sides',
-            'orders': 0,
-        },
-        'pickle': {
-            'category': 'sides',
-            'orders': 0,
-        },
-        'cabbage': {
-            'category': 'sides',
-            'orders': 0,
-        },
-        'ice cream': {
-            'category': 'desserts',
-            'orders': 0,
-        },
-        'cake': {
-            'category': 'desserts',
-            'orders': 0,
-        },
-        'pie': {
-            'category': 'desserts',
-            'orders': 0,
-        },
-        'chocolate spaghetti': {
-            'category': 'desserts',
-            'orders': 0,
-        },
-        'foot massage': {
-            'category': 'desserts',
-            'orders': 0,
-        },
-        'coconut ice cream': {
-            'category': 'desserts',
-            'orders': 0,
-        },
-        'coffee': {
-            'category': 'drinks',
-            'orders': 0,
-        },
-        'tea': {
-            'category': 'drinks',
-            'orders': 0,
-        },
-        'blood of the innocent': {
-            'category': 'drinks',
-            'orders': 0,
-        },
-        'carp saliva': {
-            'category': 'drinks',
-            'orders': 0,
-        },
-        'bacardi 151': {
-            'category': 'drinks',
-            'orders': 0,
-        },
-        'code fellows tap water': {
-            'category': 'drinks',
-            'orders': 0,
-        },
-    }
+    'wings': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'cookies': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'spring rolls': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'brussel sprouts': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'brains': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 10.00,
+    },
+    '6 compliments': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'salmon': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'steak': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'meat tornado': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'a literal garden': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'cheeseburger': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'lasagne': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'cottage cheese': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'apple sauce': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'over-ripe banana': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'freedom fries': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'pickle': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'cabbage': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'ice cream': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'cake': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'pie': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'chocolate spaghetti': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'foot massage': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'coconut ice cream': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'coffee': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'tea': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'blood of the innocent': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'carp saliva': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'bacardi 151': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 10.00,
+    },
+    'code fellows tap water': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 10.00,
+    },
+}
 
+current_order_subtotal = 0
 
 def main():
     print_header()
@@ -214,10 +245,20 @@ def user_prompt():
         if user_input == 'quit':
             break
         if user_input.lower() in menu.keys():
+        
             menu[user_input.lower()]['orders'] += 1
-            print('\n** {1} order of {0} have been added to your meal **'.format(user_input, menu[user_input.lower()]['orders']))
+            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input, menu[user_input.lower()]['orders'], get_total_price_before_tax(current_order_subtotal, user_input.lower())))
         else:
             print('\nSorry we don\'t carry', user_input)
+
+
+def get_total_price_before_tax(subtotal, ordered_item):
+    if ordered_item is '':
+        raise SyntaxError('Argument invalid. Must be not be an empty string.')
+    if ordered_item not in menu.keys():
+        raise LookupError('Argument invalid. Must be valid menu item from menu dict.')
+    subtotal += menu[ordered_item]['price']
+    return subtotal
 
 
 if __name__ == '__main__':

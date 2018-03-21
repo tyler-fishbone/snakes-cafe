@@ -1,11 +1,11 @@
 # Test Plan
 
-### Menu category displays correctly to user
+### Menu category displays correctly to user X
 input: category
 output: formatted string of items and prices
 function name: get_menu_items_from_category
 
-## check total order cost is correct
+## check total order cost is correct X
 input: previous total cost plus new item cost
 output: new total cost
 function name: get_total_price_before_tax
