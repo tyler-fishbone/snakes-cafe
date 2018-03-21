@@ -278,7 +278,7 @@ def create_list_of_items_ordered():
 
 
 def get_sales_tax(subtotal):
-    return subtotal + .0101
+    return subtotal * .101
 
 
 def create_reciept(subtotal):
@@ -289,8 +289,14 @@ The Snakes Cafe
 
 Order #{}
 ===========================================
-""".format(user_uuid) 
-    reciept_string += '{:<22s}{:>21s}'.format('Subtotal', '${:.2f}'.format(subtotal))
+""".format(user_uuid)
+    reciept_string += '\n-------------------------------------------\n'
+
+    reciept_string += '{:<22s}{:>21s}\n'.format('Subtotal', '${:.2f}'.format(subtotal))
+    reciept_string += '{:<22s}{:>21s}\n'.format('Sales Tax', '${:.2f}'.format(get_sales_tax(subtotal)))
+    reciept_string += '---------\n'
+    reciept_string += '{:<22s}{:>21s}\n'.format('Total Due', '${:.2f}'.format(subtotal + get_sales_tax(subtotal)))
+    reciept_string += '*******************************************\n'
 # Wings x1                              $2.00
 # Spring Rolls x3                       $7.50
 # Steak x1                             $12.00
