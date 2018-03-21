@@ -12,6 +12,18 @@ menu = {
             'category': 'appetizers',
             'orders': 0,
         },
+        'brussel sprouts': {
+            'category': 'appetizers',
+            'orders': 0,
+        },
+        'brains': {
+            'category': 'appetizers',
+            'orders': 0,
+        },
+        '6 compliments': {
+            'category': 'appetizers',
+            'orders': 0,
+        },
         'salmon': {
             'category': 'entrees',
             'orders': 0,
@@ -28,6 +40,38 @@ menu = {
             'category': 'entrees',
             'orders': 0,
         },
+        'cheeseburger': {
+            'category': 'entrees',
+            'orders': 0,
+        },
+        'lasagne': {
+            'category': 'entrees',
+            'orders': 0,
+        },
+        'cottage cheese': {
+            'category': 'sides',
+            'orders': 0,
+        },
+        'apple sauce': {
+            'category': 'sides',
+            'orders': 0,
+        },
+        'over-ripe banana': {
+            'category': 'sides',
+            'orders': 0,
+        },
+        'freedom fries': {
+            'category': 'sides',
+            'orders': 0,
+        },
+        'pickle': {
+            'category': 'sides',
+            'orders': 0,
+        },
+        'cabbage': {
+            'category': 'sides',
+            'orders': 0,
+        },
         'ice cream': {
             'category': 'desserts',
             'orders': 0,
@@ -37,6 +81,18 @@ menu = {
             'orders': 0,
         },
         'pie': {
+            'category': 'desserts',
+            'orders': 0,
+        },
+        'chocolate spaghetti': {
+            'category': 'desserts',
+            'orders': 0,
+        },
+        'foot massage': {
+            'category': 'desserts',
+            'orders': 0,
+        },
+        'coconut ice cream': {
             'category': 'desserts',
             'orders': 0,
         },
@@ -105,48 +161,44 @@ def print_appetizers():
     print(
         '''
 Appetizers
-----------
-        '''
+----------'''
     )
-    for key, value in menu.items():
-        if value['category'] == 'appetizers':
-            print(key)
+    menu_list = get_menu_items_from_category('appetizers')
+    for item in menu_list:
+        print(item)
 
 
 def print_entrees():
     print(
         '''
 Entrees
--------
-        '''
+-------'''
     )
-    for key, value in menu.items():
-        if value['category'] == 'entrees':
-            print(key)
+    menu_list = get_menu_items_from_category('entrees')
+    for item in menu_list:
+        print(item)
 
 
 def print_desserts():
     print(
         '''
 Desserts
--------
-        '''
+-------'''
     )
-    for key, value in menu.items():
-        if value['category'] == 'desserts':
-            print(key)
+    menu_list = get_menu_items_from_category('desserts')
+    for item in menu_list:
+        print(item)
 
 
 def print_drinks():
     print(
         '''
 Drinks
--------
-        '''
+-------'''
     )
-    for key, value in menu.items():
-        if value['category'] == 'drinks':
-            print(key)
+    menu_list = get_menu_items_from_category('drinks')
+    for item in menu_list:
+        print(item)
 
 
 def user_prompt():

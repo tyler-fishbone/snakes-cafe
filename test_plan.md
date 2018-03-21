@@ -19,8 +19,6 @@ input: main menu dict
 output: list of keys that have > 0 orders
 function name: create_list_of_items_ordered
 
-
-
 ## calculate tax
 input: float
 output: float * 10.1%
