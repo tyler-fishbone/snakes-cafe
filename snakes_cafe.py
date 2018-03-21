@@ -154,27 +154,24 @@ menu = {
 }
 
 user_uuid = uuid.uuid4()
+list_of_menu_categories = ['appetizers', 'entrees', 'sides', 'desserts', 'drinks']
 
 
 def main():
-    print_header()
-    print_appetizers()
-    print_entrees()
-    print_desserts()
-    print_drinks()
+    print_whole_menu()
     user_prompt()
 
 
 def print_header():
     print(
         '''
-**************************************
-**    Welcome to the Snakes Cafe!   **
-**    Please see our menu below.    **
-**                                  **
-**  To see your order, type "order" **
-** To quit at any time, type "quit" **
-**************************************
+**********************************************
+**        Welcome to the Snakes Cafe!       **
+**        Please see our menu below.        **
+**                                          **
+**      To see your order, type "order"     **
+**     To quit at any time, type "quit"     **
+**********************************************
         '''
     )
 
@@ -191,48 +188,21 @@ def get_menu_items_from_category(category):
     return menu_item_list
 
 
-def print_appetizers():
+def print_whole_menu():
+    print_header()
+    for item in list_of_menu_categories:
+        print_category(item)
+
+
+def print_category(cat):
     print(
         '''
-Appetizers
-----------'''
+{}
+-------'''.format(cat.title())
     )
-    menu_list = get_menu_items_from_category('appetizers')
+    menu_list = get_menu_items_from_category(cat)
     for item in menu_list:
-        print(item)
-
-
-def print_entrees():
-    print(
-        '''
-Entrees
--------'''
-    )
-    menu_list = get_menu_items_from_category('entrees')
-    for item in menu_list:
-        print(item)
-
-
-def print_desserts():
-    print(
-        '''
-Desserts
--------'''
-    )
-    menu_list = get_menu_items_from_category('desserts')
-    for item in menu_list:
-        print(item)
-
-
-def print_drinks():
-    print(
-        '''
-Drinks
--------'''
-    )
-    menu_list = get_menu_items_from_category('drinks')
-    for item in menu_list:
-        print(item)
+        print(item.title())
 
 
 def user_prompt():
@@ -240,20 +210,24 @@ def user_prompt():
     while True:
         print(
             '''
-***********************************
-** What would you like to order? **
-***********************************
+*******************************************
+**     What would you like to order?     **
+*******************************************
             '''
         )
-        user_input = input('>   ')
+        user_input = input('>   ').lower()
         if user_input == 'quit':
             break
         elif user_input == 'order':
             print(create_reciept(current_order_subtotal))
-        elif user_input.lower() in menu.keys():     
+        elif user_input == 'menu':
+            print_whole_menu()
+        elif user_input in list_of_menu_categories:
+            print_category(user_input)
+        elif user_input.lower() in menu.keys():
             menu[user_input.lower()]['orders'] += 1
             current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input, menu[user_input.lower()]['orders'], current_order_subtotal))
+            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], current_order_subtotal))
         else:
             print('\nSorry we don\'t carry', user_input)
 
@@ -294,7 +268,7 @@ Order #{}
 
     items_ordered = create_list_of_items_ordered()
     for key in items_ordered:
-        order_amount_string = key + ' x' + str(menu[key]['orders'])
+        order_amount_string = key.title() + ' x' + str(menu[key]['orders'])
         reciept_string += '{:<32s}{:>11s}\n'.format(order_amount_string, '${:.2f}'.format(menu[key]['price']))
 
     reciept_string += '\n-------------------------------------------\n'
