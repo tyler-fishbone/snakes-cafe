@@ -249,7 +249,7 @@ def user_prompt():
         if user_input == 'quit':
             break
         elif user_input == 'order':
-            print(create_reciept())
+            print(create_reciept(current_order_subtotal))
         elif user_input.lower() in menu.keys():     
             menu[user_input.lower()]['orders'] += 1
             current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
@@ -277,27 +277,38 @@ def create_list_of_items_ordered():
     return list_of_ordered_items
 
 
-def create_reciept():
-    return """
+def get_sales_tax(subtotal):
+    return subtotal + .0101
+
+
+def create_reciept(subtotal):
+    reciept_string = """
 *******************************************
 The Snakes Cafe
 "Eatability Counts"
 
 Order #{}
 ===========================================
-    """.format(user_uuid)
+""".format(user_uuid) 
+    reciept_string += '{:<22s}{:>21s}'.format('Subtotal', '${:.2f}'.format(subtotal))
 # Wings x1                              $2.00
 # Spring Rolls x3                       $7.50
 # Steak x1                             $12.00
 # Blood of the Innocent x1            $666.66
 
+#     bottom_of_reciept = """
 # -------------------------------------------
-# Subtotal                            $688.16
+# Subtotal           {:{align}{width}.{prec}f}
 # Sales Tax                            $66.07
 # ---------
 # Total Due                           $754.23
 # *******************************************
-
+#     """.format(subtotal, align='>', width=24, prec=2)
+    return reciept_string
 
 if __name__ == '__main__':
     main()
+
+
+# str += '{:<22s}\t\t{}\n'.format(item.title(), '${:.2f}'.format(data[0]))
+# {:<26s}{:>12s}
