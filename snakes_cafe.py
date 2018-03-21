@@ -1,3 +1,4 @@
+import uuid
 
 menu = {
     'wings': {
@@ -152,6 +153,8 @@ menu = {
     },
 }
 
+user_uuid = uuid.uuid4()
+
 
 def main():
     print_header()
@@ -169,6 +172,7 @@ def print_header():
 **    Welcome to the Snakes Cafe!   **
 **    Please see our menu below.    **
 **                                  **
+**  To see your order, type "order" **
 ** To quit at any time, type "quit" **
 **************************************
         '''
@@ -244,8 +248,9 @@ def user_prompt():
         user_input = input('>   ')
         if user_input == 'quit':
             break
-        if user_input.lower() in menu.keys():
-        
+        elif user_input == 'order':
+            print(create_reciept())
+        elif user_input.lower() in menu.keys():     
             menu[user_input.lower()]['orders'] += 1
             current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
             print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input, menu[user_input.lower()]['orders'], current_order_subtotal))
@@ -267,9 +272,30 @@ def create_list_of_items_ordered():
     for key, value in menu.items():
         if value['orders'] > 0:
             list_of_ordered_items.append(key)
-    # if list_of_ordered_items is []:
-    #     raise LookupError('Argument invalid. Must be not be an empty list.')
+    if list_of_ordered_items == []:
+        raise LookupError('Argument invalid. Must be not be an empty list.')
     return list_of_ordered_items
+
+
+def create_reciept():
+    return """
+*******************************************
+The Snakes Cafe
+"Eatability Counts"
+
+Order #{}
+===========================================
+    """.format(user_uuid)
+# Wings x1                              $2.00
+# Spring Rolls x3                       $7.50
+# Steak x1                             $12.00
+# Blood of the Innocent x1            $666.66
+# -------------------------------------------
+# Subtotal                            $688.16
+# Sales Tax                            $66.07
+# ---------
+# Total Due                           $754.23
+# *******************************************
 
 
 if __name__ == '__main__':
