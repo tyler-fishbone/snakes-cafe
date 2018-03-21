@@ -205,12 +205,15 @@ def print_category(cat):
         print(item.title())
 
 
-# def remove_single_order(input_key):
-#     menu[input_key][]
-
+def remove_single_order(full_remove_string):
+    for key in menu.keys():
+        if key in full_remove_string:
+            if menu[key]['orders'] > 0:
+                menu[key]['orders'] -= 1
+            return key
+    
 
 def user_prompt():
-    current_order_subtotal = 0
     while True:
         print(
             '''
@@ -223,26 +226,36 @@ def user_prompt():
         if user_input == 'quit':
             break
         elif user_input == 'order':
-            print(create_reciept(current_order_subtotal))
+            print(create_reciept(get_current_subtotal()))
         elif user_input == 'menu':
             print_whole_menu()
         elif user_input in list_of_menu_categories:
             print_category(user_input)
+        elif 'remove ' in user_input:
+            key_of_order_removed = remove_single_order(user_input)
+            print('\n** 1 order of {0} has been removed from your meal and your total is ${1} **'.format(key_of_order_removed.title(), get_current_subtotal()))
         elif user_input.lower() in menu.keys():
             menu[user_input.lower()]['orders'] += 1
-            current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], current_order_subtotal))
+            # current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
+            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
         else:
             print('\nSorry we don\'t carry', user_input)
 
 
-def get_total_price_before_tax(subtotal, ordered_item):
-    if ordered_item is '':
-        raise SyntaxError('Argument invalid. Must be not be an empty string.')
-    if ordered_item not in menu.keys():
-        raise LookupError('Argument invalid. Must be valid menu item from menu dict.')
-    subtotal += menu[ordered_item]['price']
+def get_current_subtotal():
+    subtotal = 0
+    for key in menu:
+        subtotal += menu[key]['orders'] * menu[key]['price']
     return subtotal
+
+
+# def get_total_price_before_tax(subtotal, ordered_item):
+#     if ordered_item is '':
+#         raise SyntaxError('Argument invalid. Must be not be an empty string.')
+#     if ordered_item not in menu.keys():
+#         raise LookupError('Argument invalid. Must be valid menu item from menu dict.')
+#     subtotal += menu[ordered_item]['price']
+#     return subtotal
 
 
 def create_list_of_items_ordered():
