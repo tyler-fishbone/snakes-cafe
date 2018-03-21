@@ -290,6 +290,7 @@ Order #{}
 # Spring Rolls x3                       $7.50
 # Steak x1                             $12.00
 # Blood of the Innocent x1            $666.66
+
 # -------------------------------------------
 # Subtotal                            $688.16
 # Sales Tax                            $66.07
