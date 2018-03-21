@@ -205,6 +205,10 @@ def print_category(cat):
         print(item.title())
 
 
+# def remove_single_order(input_key):
+#     menu[input_key][]
+
+
 def user_prompt():
     current_order_subtotal = 0
     while True:
