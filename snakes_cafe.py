@@ -152,7 +152,6 @@ menu = {
     },
 }
 
-current_order_subtotal = 0
 
 def main():
     print_header()
@@ -233,6 +232,7 @@ Drinks
 
 
 def user_prompt():
+    current_order_subtotal = 0
     while True:
         print(
             '''
@@ -247,7 +247,8 @@ def user_prompt():
         if user_input.lower() in menu.keys():
         
             menu[user_input.lower()]['orders'] += 1
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input, menu[user_input.lower()]['orders'], get_total_price_before_tax(current_order_subtotal, user_input.lower())))
+            current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
+            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input, menu[user_input.lower()]['orders'], current_order_subtotal))
         else:
             print('\nSorry we don\'t carry', user_input)
 
