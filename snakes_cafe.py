@@ -52,6 +52,18 @@ menu = {
             'category': 'drinks',
             'orders': 0,
         },
+        'carp saliva': {
+            'category': 'drinks',
+            'orders': 0,
+        },
+        'bacardi 151': {
+            'category': 'drinks',
+            'orders': 0,
+        },
+        'code fellows tap water': {
+            'category': 'drinks',
+            'orders': 0,
+        },
     }
 
 
@@ -75,6 +87,18 @@ def print_header():
 **************************************
         '''
     )
+
+
+def get_menu_items_from_category(category):
+    menu_item_list = []
+    if type(category) is not str:
+        raise TypeError('Argument invalid. Must be string.')
+    if category not in [data['category'] for data in menu.values()]:
+        raise LookupError('Argument invalid. Must be valid category from menu dict.')
+    for key, value in menu.items():
+        if value['category'] == category:
+            menu_item_list.append(key)
+    return menu_item_list
 
 
 def print_appetizers():
@@ -112,7 +136,7 @@ Desserts
         if value['category'] == 'desserts':
             print(key)
 
-    
+
 def print_drinks():
     print(
         '''
@@ -125,7 +149,7 @@ Drinks
             print(key)
 
 
-def user_prompt():    
+def user_prompt():
     while True:
         print(
             '''
