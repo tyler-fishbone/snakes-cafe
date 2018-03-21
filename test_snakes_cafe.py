@@ -68,3 +68,19 @@ def test_get_total_price_before_tax_with_no_input():
 #         snakes_cafe.get_total_price_before_tax(current_order_subtotal, 'wings')
 
 #     assert str(err.value) == 'Argument invalid. Price must exist as key.'
+
+
+## check list of items ordered
+
+
+def test_make_list_of_keys_of_orders_greater_than_zero():
+    snakes_cafe.menu['wings']['orders'] += 1
+    assert snakes_cafe.create_list_of_items_ordered() == ['wings']
+    snakes_cafe.menu['wings']['orders'] = 0
+
+
+# def test_no_orders_greater_than_zero_then_cannot_make_list():
+#     with pytest.raises(LookupError) as err:
+#         snakes_cafe.create_list_of_items_ordered()
+
+#     assert str(err.value) == 'Argument invalid. Must be not be an empty list.'

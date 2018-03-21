@@ -10,10 +10,6 @@ input: previous total cost plus new item cost
 output: new total cost
 function name: get_total_price_before_tax
 
-## uuid code
-input:
-output: valid uuid
-
 ## check list of items ordered
 input: main menu dict
 output: list of keys that have > 0 orders

@@ -262,5 +262,15 @@ def get_total_price_before_tax(subtotal, ordered_item):
     return subtotal
 
 
+def create_list_of_items_ordered():
+    list_of_ordered_items = []
+    for key, value in menu.items():
+        if value['orders'] > 0:
+            list_of_ordered_items.append(key)
+    # if list_of_ordered_items is []:
+    #     raise LookupError('Argument invalid. Must be not be an empty list.')
+    return list_of_ordered_items
+
+
 if __name__ == '__main__':
     main()
