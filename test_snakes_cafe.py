@@ -54,11 +54,11 @@ def test_make_list_of_keys_of_orders_greater_than_zero():
     snakes_cafe.menu['wings']['orders'] = 0
 
 
-def test_no_orders_greater_than_zero_then_cannot_make_list():
-    with pytest.raises(LookupError) as err:
-        snakes_cafe.create_list_of_items_ordered()
+# def test_no_orders_greater_than_zero_then_cannot_make_list():
+#     with pytest.raises(LookupError) as err:
+#         snakes_cafe.create_list_of_items_ordered()
 
-    assert str(err.value) == 'Argument invalid. Must be not be an empty list.'
+#     assert str(err.value) == 'Argument invalid. Must be not be an empty list.'
 
 # print_category
 
