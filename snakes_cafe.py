@@ -195,6 +195,9 @@ def print_whole_menu():
 
 
 def print_category(cat):
+    if cat not in [data['category'] for data in menu.values()]:
+        raise LookupError('Argument invalid. Must be valid category from menu dict.')
+    testing_key_list = []
     print(
         '''
 {}
@@ -202,7 +205,9 @@ def print_category(cat):
     )
     menu_list = get_menu_items_from_category(cat)
     for item in menu_list:
+        testing_key_list.append(item)
         print(item.title())
+    return testing_key_list
 
 
 def remove_single_order(full_remove_string):
@@ -210,8 +215,10 @@ def remove_single_order(full_remove_string):
         if key in full_remove_string:
             if menu[key]['orders'] > 0:
                 menu[key]['orders'] -= 1
-            return key
-    
+                return key
+            else:
+                raise ValueError('Cannot remove orders past 0.')
+
 
 def user_prompt():
     while True:
@@ -269,6 +276,8 @@ def create_list_of_items_ordered():
 
 
 def get_sales_tax(subtotal):
+    if type(subtotal) is str:
+        raise TypeError('Argument invalid. Must be number.')
     return subtotal * .101
 
 
