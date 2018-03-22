@@ -31,6 +31,36 @@ menu = {
         'orders': 0,
         'price': 1.00,
     },
+    'broccoli soup': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 5.00,
+    },
+    'bird eyes': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 37.00,
+    },
+    'fingernail nachos': {
+        'category': 'appetizers',
+        'orders': 0,
+        'price': 15.00,
+    },
+    'whale': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 100.00,
+    },
+    'dolphin': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 70.00,
+    },
+    'turtle soup': {
+        'category': 'entrees',
+        'orders': 0,
+        'price': 55.00,
+    },
     'salmon': {
         'category': 'entrees',
         'orders': 0,
@@ -60,6 +90,21 @@ menu = {
         'category': 'entrees',
         'orders': 0,
         'price': 14.00,
+    },
+    'pineapple wedges': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 7.00,
+    },
+    'seaweed salad': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 9.00,
+    },
+    'spring mix': {
+        'category': 'sides',
+        'orders': 0,
+        'price': 7.00,
     },
     'cottage cheese': {
         'category': 'sides',
@@ -91,6 +136,21 @@ menu = {
         'orders': 0,
         'price': 5.00,
     },
+    'birthday cake and song': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 15.00,
+    },
+    'cherry pie': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 9.00,
+    },
+    'cheesecake': {
+        'category': 'desserts',
+        'orders': 0,
+        'price': 8.00,
+    },
     'ice cream': {
         'category': 'desserts',
         'orders': 0,
@@ -120,6 +180,21 @@ menu = {
         'category': 'desserts',
         'orders': 0,
         'price': 5.00,
+    },
+    'bud light': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 3.00,
+    },
+    'gargled lemonade': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 8.00,
+    },
+    'mango lassi': {
+        'category': 'drinks',
+        'orders': 0,
+        'price': 9.00,
     },
     'coffee': {
         'category': 'drinks',
