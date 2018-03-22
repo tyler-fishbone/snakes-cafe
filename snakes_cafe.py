@@ -117,7 +117,7 @@ menu = {
         'orders': 0,
         'price': 4.00,
     },
-    'over-ripe banana': {
+    'overripe banana': {
         'category': 'sides',
         'orders': 0,
         'price': 2.00,
@@ -217,7 +217,7 @@ menu = {
         'orders': 0,
         'price': 25.00,
     },
-    'bacardi 151': {
+    'bacardi': {
         'category': 'drinks',
         'orders': 0,
         'price': 9.00,
@@ -313,6 +313,12 @@ def remove_single_order(full_remove_string):
                 raise ValueError('Cannot remove orders past 0.')
 
 
+def add_multiple_orders(user_input_prm):
+    user_input_list = user_input_prm.split('-')
+    menu[user_input_list[1].lower()]['orders'] += int(user_input_list[0])
+    print('\n** {1} orders of {0} have been added to your meal and your total is ${2} **'.format(user_input_list[1].title(), user_input_list[0], get_current_subtotal()))
+    return user_input_list
+
 def user_prompt():
     while True:
         print(
@@ -339,7 +345,9 @@ def user_prompt():
             ## Create contained function for this
             menu[user_input.lower()]['orders'] += 1
             # current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+            print('\n** 1 order of {0} has been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+        elif '-' in user_input:
+            add_multiple_orders(user_input)
         else:
             print('\nSorry we don\'t carry', user_input)
 
