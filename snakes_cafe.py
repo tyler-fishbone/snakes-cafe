@@ -158,11 +158,17 @@ list_of_menu_categories = ['appetizers', 'entrees', 'sides', 'desserts', 'drinks
 
 
 def main():
+    """
+    This function is here to kick off the application
+    """
     print_whole_menu()
     user_prompt()
 
 
 def print_header():
+    """
+    This function prints the header of the menu to the user
+    """
     print(
         '''
 **********************************************
@@ -177,6 +183,9 @@ def print_header():
 
 
 def get_menu_items_from_category(category):
+    """
+    This function takes a category and returns a list of menu items in it
+    """
     menu_item_list = []
     if type(category) is not str:
         raise TypeError('Argument invalid. Must be string.')
@@ -189,12 +198,18 @@ def get_menu_items_from_category(category):
 
 
 def print_whole_menu():
+    """
+    This function prints all of the menu items for each category
+    """
     print_header()
     for item in list_of_menu_categories:
         print_category(item)
 
 
 def print_category(cat):
+    """
+    This function takes in a category and prints the items for that category
+    """
     if cat not in [data['category'] for data in menu.values()]:
         raise LookupError('Argument invalid. Must be valid category from menu dict.')
     testing_key_list = []
@@ -211,6 +226,9 @@ def print_category(cat):
 
 
 def remove_single_order(full_remove_string):
+    """
+    This function removes an order from a menu item when prompted
+    """
     for key in menu.keys():
         if key in full_remove_string:
             if menu[key]['orders'] > 0:
@@ -221,6 +239,9 @@ def remove_single_order(full_remove_string):
 
 
 def user_prompt():
+    """
+    This function handles the user prompt and allows for the input of menu items, categories, menu, and order.
+    """
     while True:
         print(
             '''
@@ -240,16 +261,19 @@ def user_prompt():
             print_category(user_input)
         elif 'remove ' in user_input:
             key_of_order_removed = remove_single_order(user_input)
-            print('\n** 1 order of {0} has been removed from your meal and your total is ${1} **'.format(key_of_order_removed.title(), get_current_subtotal()))
+            print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
         elif user_input.lower() in menu.keys():
             menu[user_input.lower()]['orders'] += 1
             # current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+            print('\n** {1} order of {0} have been added to your meal and your total is ${2:.2f} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
         else:
             print('\nSorry we don\'t carry', user_input)
 
 
 def get_current_subtotal():
+    """
+    This function retrieves the current order's subtotal
+    """
     subtotal = 0
     for key in menu:
         subtotal += menu[key]['orders'] * menu[key]['price']
@@ -266,22 +290,31 @@ def get_current_subtotal():
 
 
 def create_list_of_items_ordered():
+    """
+    This function creates a list of the keys of items that have been ordered
+    """
     list_of_ordered_items = []
     for key, value in menu.items():
         if value['orders'] > 0:
             list_of_ordered_items.append(key)
-    if list_of_ordered_items == []:
-        raise LookupError('Argument invalid. Must be not be an empty list.')
+    # if list_of_ordered_items == []:
+    #     raise LookupError('Argument invalid. Must be not be an empty list.')
     return list_of_ordered_items
 
 
 def get_sales_tax(subtotal):
+    """
+    This function calculates the sales tax
+    """
     if type(subtotal) is str:
         raise TypeError('Argument invalid. Must be number.')
     return subtotal * .101
 
 
 def create_reciept(subtotal):
+    """
+    This function assembles and prints the reciept for the user
+    """
     reciept_string = """
 *******************************************
 The Snakes Cafe
