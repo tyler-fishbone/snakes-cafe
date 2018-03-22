@@ -1,5 +1,6 @@
 import uuid
 
+#change this to default menu
 menu = {
     'wings': {
         'category': 'appetizers',
@@ -237,6 +238,10 @@ def main():
     user_prompt()
 
 
+def extend_menu():
+    pass
+
+
 def print_header():
     print(
         '''
@@ -285,6 +290,19 @@ def print_category(cat):
     return testing_key_list
 
 
+def place_order(user_input):
+    pass
+    # inside here we will add the functionality of incrementing orders made inside function
+    # if no int in user input
+    #   check if item stock is > 0
+    #   if so increment stock -= 1
+    #   orders += 1
+    #   return orders
+    # if int in user input
+    #   check if item stock - int >= 0
+    #   if so -= stock by int
+    #   order += int
+
 def remove_single_order(full_remove_string):
     for key in menu.keys():
         if key in full_remove_string:
@@ -307,6 +325,7 @@ def user_prompt():
         user_input = input('>   ').lower()
         if user_input == 'quit':
             break
+        # allow user to give new menu for use in program - extend menu? Need clarification
         elif user_input == 'order':
             print(create_reciept(get_current_subtotal()))
         elif user_input == 'menu':
@@ -317,6 +336,7 @@ def user_prompt():
             key_of_order_removed = remove_single_order(user_input)
             print('\n** 1 order of {0} has been removed from your meal and your total is ${1} **'.format(key_of_order_removed.title(), get_current_subtotal()))
         elif user_input.lower() in menu.keys():
+            ## Create contained function for this
             menu[user_input.lower()]['orders'] += 1
             # current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
             print('\n** {1} order of {0} have been added to your meal and your total is ${2} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
