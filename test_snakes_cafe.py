@@ -5,10 +5,16 @@ import pytest
 
 
 def test_get_menu_items_from_valid_category():
+    """
+    test that items from the correct category are return when that category is input into the function
+    """
     assert snakes_cafe.get_menu_items_from_category('drinks') == ['coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi 151', 'code fellows tap water']
 
 
 def test_get_menu_items_from_invalid_category():
+    """
+    if user or program inputs an invalid into this function it handles the lookup error
+    """
     with pytest.raises(LookupError) as err:
         snakes_cafe.get_menu_items_from_category('car')
 
@@ -16,6 +22,10 @@ def test_get_menu_items_from_invalid_category():
 
 
 def test_get_menu_items_from_int():
+    """
+    handle exception raised if user were to enter in an integer to the function that gets menu items
+    from a specific category
+    """
     with pytest.raises(TypeError) as err:
         snakes_cafe.get_menu_items_from_category(1)
 
@@ -49,6 +59,11 @@ def test_get_menu_items_from_int():
 
 
 def test_make_list_of_keys_of_orders_greater_than_zero():
+    """
+    tests function that generates a list of all the items with an order number greater than zero.
+    this function does this by adding an order of wings to the menu dict (which starts at zero),
+    runs the function, then resets the orders key back to 0 for wings
+    """
     snakes_cafe.menu['wings']['orders'] += 1
     assert snakes_cafe.create_list_of_items_ordered() == ['wings']
     snakes_cafe.menu['wings']['orders'] = 0
@@ -64,10 +79,16 @@ def test_make_list_of_keys_of_orders_greater_than_zero():
 
 
 def test_valid_category():
+    """
+    test that items from the correct category are return when that category is input into the function
+    """
     assert snakes_cafe.print_category('appetizers') == ['wings', 'cookies', 'spring rolls', 'brussel sprouts', 'brains', '6 compliments']
 
 
 def test_invalid_category():
+    """
+    if user or program inputs an invalid into this function it handles the lookup error
+    """
     with pytest.raises(LookupError) as err:
         snakes_cafe.print_category('car')
 
@@ -78,11 +99,17 @@ def test_invalid_category():
 
 
 def test_valid_removal():
+    """
+    asserts that when remove single order function is run that the key of the removed item is returned
+    """
     snakes_cafe.menu['wings']['orders'] = 1
     assert snakes_cafe.remove_single_order('remove wings') == 'wings'
 
 
 def test_cannot_remove_orders_less_than_zero():
+    """
+    handles exception if customer tries to remove an item order when it is already at 0
+    """
     with pytest.raises(ValueError) as err:
         snakes_cafe.remove_single_order('remove wings')
 
@@ -93,10 +120,16 @@ def test_cannot_remove_orders_less_than_zero():
 
 
 def test_zero_subtotal():
+    """
+    asserts get_current_subtotal returns zero before any orders are placed
+    """
     assert snakes_cafe.get_current_subtotal() == 0.0
 
 
 def test_positive_subtotal():
+    """
+    test subtotal when customer has made an order. resets total afterwards.
+    """
     snakes_cafe.menu['wings']['orders'] = 1
     assert snakes_cafe.get_current_subtotal() == 10.00
     snakes_cafe.menu['wings']['orders'] = 0
@@ -106,10 +139,16 @@ def test_positive_subtotal():
 
 
 def test_sales_tax():
+    """
+    asserts subtotal is being calculated correctly
+    """
     assert snakes_cafe.get_sales_tax(20.00) == 2.02
 
 
 def test_invalid_sales_tax():
+    """
+    handles exceptions where an incorrect type is passed into the get_sales_tax function
+    """
     with pytest.raises(TypeError) as err:
         snakes_cafe.get_sales_tax('car')
 
