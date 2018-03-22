@@ -8,7 +8,7 @@ def test_get_menu_items_from_valid_category():
     """
     test that items from the correct category are return when that category is input into the function
     """
-    assert snakes_cafe.get_menu_items_from_category('drinks') == ['coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi 151', 'code fellows tap water']
+    assert snakes_cafe.get_menu_items_from_category('drinks') == ['bud light', 'gargled lemonade', 'mango lassi', 'coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi', 'code fellows tap water',]
 
 
 def test_get_menu_items_from_invalid_category():
@@ -82,7 +82,7 @@ def test_valid_category():
     """
     test that items from the correct category are return when that category is input into the function
     """
-    assert snakes_cafe.print_category('appetizers') == ['wings', 'cookies', 'spring rolls', 'brussel sprouts', 'brains', '6 compliments']
+    assert snakes_cafe.print_category('drinks') == ['bud light', 'gargled lemonade', 'mango lassi', 'coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi', 'code fellows tap water',]
 
 
 def test_invalid_category():
@@ -153,3 +153,14 @@ def test_invalid_sales_tax():
         snakes_cafe.get_sales_tax('car')
 
     assert str(err.value) == 'Argument invalid. Must be number.'
+
+
+# add_multiple_orders
+
+
+def test_add_multiple_orders_valid_int():
+    assert snakes_cafe.add_multiple_orders('5-wings') == ['5', 'wings']
+
+
+def test_add_multiple_orders_invalid_float():
+    assert snakes_cafe.add_multiple_orders('5.5-wings') is None

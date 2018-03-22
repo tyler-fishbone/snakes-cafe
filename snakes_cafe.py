@@ -354,27 +354,42 @@ def remove_single_order(full_remove_string):
     """
     This function removes an order from a menu item when prompted
     """
+    # try:
     for key in menu.keys():
+        # try:
         if key in full_remove_string:
             if menu[key]['orders'] > 0:
                 menu[key]['orders'] -= 1
                 menu[key]['stock'] += 1
+                key_of_order_removed = key
+                print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
                 return key
-            else:
-                raise ValueError('Cannot remove orders past 0.')
-
+    print("\n To remove an item enter 'remove (item name)'")
+                    # return key
+        #         else:
+        #             raise ValueError('Cannot remove orders past 0.')
+        #     else:
+        #         raise LookupError('lookup error text')
+        # except Exception as err:
+        #     print(err) 
+            # print('Hit else')
+        # c
 
 def add_multiple_orders(user_input_prm):
     """
     This function allows the user to add multiple orders
     """
-    user_input_list = user_input_prm.split('-')
-    if (menu[user_input_list[1].lower()]['stock'] - user_input_list[0]) > 0:
-        menu[user_input_list[1].lower()]['orders'] += int(user_input_list[0])
-        menu[user_input_list[1].lower()]['stock'] -= int(user_input_list[0])
-        print('\n** {1} orders of {0} have been added to your meal and your total is ${2} **'.format(user_input_list[1].title(), user_input_list[0], get_current_subtotal()))
-        return user_input_list
-    # try except 
+    try: 
+        user_input_list = user_input_prm.split('-')
+        if (menu[user_input_list[1].lower()]['stock'] - int(user_input_list[0])) > 0:
+            menu[user_input_list[1].lower()]['orders'] += int(user_input_list[0])
+            menu[user_input_list[1].lower()]['stock'] -= int(user_input_list[0])
+            print('\n** {1} orders of {0} have been added to your meal and your total is ${2} **'.format(user_input_list[1].title(), user_input_list[0], get_current_subtotal()))
+            return user_input_list
+    except ValueError:
+        print('\nSorry, we do not know what you mean, use format #-items')
+    except KeyError:
+        print('\nSorry, we do not know what you mean, use format #-items')
 
 
 def user_prompt():
@@ -400,8 +415,8 @@ def user_prompt():
         elif user_input in list_of_menu_categories:
             print_category(user_input)
         elif 'remove ' in user_input:
-            key_of_order_removed = remove_single_order(user_input)
-            print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
+            remove_single_order(user_input)
+            # print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
         elif user_input.lower() in menu.keys():
             menu[user_input.lower()]['orders'] += 1
             menu[user_input.lower()]['stock'] -= 1
