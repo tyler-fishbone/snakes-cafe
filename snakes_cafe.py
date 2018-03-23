@@ -389,6 +389,9 @@ class Order:
         return '<Order #{} | Items: {} | Total: {}>'.format(self.user_uuid, len(self), self.get_current_subtotal() + self.get_sales_tax(self.get_current_subtotal()))
 
     def __str__(self):
+        """
+        This function shows the reciept what the instance is printed
+        """
         return print(self.display_order(self.get_current_subtotal()))
 
     def main(self):
@@ -529,6 +532,9 @@ class Order:
         print("\nTo remove an item enter 'remove #-(item name)'")
 
     def add_item(self, user_input_prm):
+        """
+        This function adds and item when prompted
+        """
         if self.menu[user_input_prm]['stock'] > 0:
             self.menu[user_input_prm.lower()]['orders'] += 1
             self.menu[user_input_prm.lower()]['stock'] -= 1
@@ -609,6 +615,9 @@ class Order:
         return list_of_ordered_items
 
     def total_items(self):
+        """
+        This function calculates the total items ordered
+        """
         total = 0
         for key in self.menu:
             total += key['orders']
@@ -650,6 +659,9 @@ Order #{}
         return reciept_string
 
     def print_reciept(self):
+        """
+        This function creates a new file containing the orders reciept
+        """
         with open('./reciepts/order-{}.txt'.format(self.user_uuid), 'w') as f:
             f.write(self.display_order(self.get_current_subtotal()))
             print('\nReciept printed!')
