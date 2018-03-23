@@ -3,9 +3,13 @@ import csv
 
 
 class Order:
-
-
+    """
+    This class creates an instance of the order
+    """
     def __init__(self):
+        """
+        This function initializes the instance
+        """
         self.menu = {
             'fries': {
                 'category': 'appetizers',
@@ -372,6 +376,14 @@ class Order:
         self.user_uuid = uuid.uuid4()
         self.set_of_menu_categories = set()
 
+    def __len__(self):
+        return self.total_items()
+
+    def __repr__(self):
+        return '<Order #{} | Items: {} | Total: {}>'.format(self.user_uuid, len(self), self.get_current_subtotal() + self.get_sales_tax(get_current_subtotal()))
+
+    def __str__(self):
+        return print(self.display_order(self.get_current_subtotal()))
 
     def main(self):
         """
@@ -380,7 +392,6 @@ class Order:
         self.new_menu_or_default()
         self.print_whole_menu()
         self.user_prompt()
-
 
     def new_menu_or_default(self):
         """
@@ -396,7 +407,6 @@ class Order:
         else:
             self.get_alt_menu(user_menu_input)
         self.set_of_menu_categories = {data['category'] for data in self.menu.values()}
-
 
     def get_alt_menu(self, file_path_input):
         """
@@ -424,9 +434,6 @@ class Order:
         except IndexError:
             print('\nNot a valid file format, going ahead with default menu')
 
-            
-
-
     def print_header(self):
         """
         This function prints the header of the menu to the user
@@ -443,10 +450,10 @@ class Order:
 **  type "remove (item) / remove #-(items)" **
 **         To order multiple items,         **
 **           type "#-(item name)"           **
+**       To print reciept type "print"      **
 **********************************************
         '''
         )
-
 
     def get_menu_items_from_category(self, category):
         """
@@ -462,7 +469,6 @@ class Order:
                 menu_item_list.append(key)
         return menu_item_list
 
-
     def print_whole_menu(self):
         """
         This function prints all of the menu items for each category
@@ -470,7 +476,6 @@ class Order:
         self.print_header()
         for item in self.set_of_menu_categories:
             self.print_category(item)
-
 
     def print_category(self, cat):
         """
@@ -489,7 +494,6 @@ class Order:
             testing_key_list.append(item)
             print(item.title())
         return testing_key_list
-
 
     def remove_item(self, full_remove_string):
         """
@@ -518,7 +522,6 @@ class Order:
                     return key
         print("\nTo remove an item enter 'remove #-(item name)'")
 
-
     def add_item(self, user_input_prm):
         if self.menu[user_input_prm]['stock'] > 0:
             self.menu[user_input_prm.lower()]['orders'] += 1
@@ -526,7 +529,6 @@ class Order:
             print('\n** 1 order of {0} has been added to your meal and your total is ${2:.2f} **'.format(user_input_prm.title(), self.menu[user_input_prm.lower()]['orders'], self.get_current_subtotal()))
         else:
             print('\nSorry quantity exceeds our stock for that item')
-
 
     def add_multiple_orders(self, user_input_prm):
         """
@@ -545,7 +547,6 @@ class Order:
             print('\nSorry, we do not know what you mean, use format #-items')
         except KeyError:
             print('\nSorry, we do not know what you mean, use format #-items')
-
 
     def user_prompt(self):
         """
@@ -575,9 +576,10 @@ class Order:
                 self.add_item(user_input)
             elif '-' in user_input:
                 self.add_multiple_orders(user_input)
+            elif user_input == 'print':
+                self.print_reciept()
             else:
                 print('\nSorry we don\'t carry', user_input)
-
 
     def get_current_subtotal(self):
         """
@@ -587,7 +589,6 @@ class Order:
         for key in self.menu:
             subtotal += self.menu[key]['orders'] * self.menu[key]['price']
         return subtotal
-
 
     def create_list_of_items_ordered(self):
         """
@@ -601,6 +602,11 @@ class Order:
         #     raise LookupError('Argument invalid. Must be not be an empty list.')
         return list_of_ordered_items
 
+    def total_items(self):
+        total = 0
+        for key in self.menu:
+            total += key['orders']
+        return total
 
     def get_sales_tax(self, subtotal):
         """
@@ -609,7 +615,6 @@ class Order:
         if type(subtotal) is str:
             raise TypeError('Argument invalid. Must be number.')
         return subtotal * .101
-
 
     def display_order(self, subtotal):
         """
@@ -637,6 +642,11 @@ Order #{}
         reciept_string += '{:<22s}{:>21s}\n'.format('Total Due', '${:.2f}'.format(subtotal + self.get_sales_tax(subtotal)))
         reciept_string += '*******************************************\n'
         return reciept_string
+
+    def print_reciept(self):
+        with open('./reciepts/order-{}.txt'.format(self.user_uuid), 'w') as f:
+            f.write(self.display_order(self.get_current_subtotal()))
+            print('\nReciept printed!')
 
 if __name__ == '__main__':
     try:
