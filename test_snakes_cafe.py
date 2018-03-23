@@ -153,8 +153,14 @@ def test_invalid_sales_tax():
 
 
 def test_add_multiple_orders_valid_int():
+    """
+    asserts that correct values are parsed from user input
+    """
     assert snakes_cafe.add_multiple_orders('5-wings') == ['5', 'wings']
 
 
 def test_add_multiple_orders_invalid_float():
+    """
+    asserts floats cannot be used as values to add
+    """
     assert snakes_cafe.add_multiple_orders('5.5-wings') is None

@@ -1,6 +1,7 @@
 import uuid
+import csv
 
-#change this to default menu
+# change this to default menu
 menu = {
     'wings': {
         'category': 'appetizers',
@@ -282,6 +283,7 @@ def main():
     """
     This function is here to kick off the application
     """
+    get_alt_menu()
     print_whole_menu()
     user_prompt()
 
@@ -459,6 +461,25 @@ def get_sales_tax(subtotal):
     if type(subtotal) is str:
         raise TypeError('Argument invalid. Must be number.')
     return subtotal * .101
+
+
+def get_alt_menu():
+    alt_menu = {}
+    with open('./alt_menu.csv', 'r') as f:
+        output = csv.reader(f)
+        for row in output:
+            print(row)
+            alt_menu += {
+                    row[0]: {
+                        'category': row[1],
+                        'orders': int(row[2]),
+                        'price': float(row[3]),
+                        'stock': int(row[4]),
+                    }
+                }
+        # alt_menu = {rows[0]:rows[1] for rows in output}
+
+    return output
 
 
 def create_reciept(subtotal):
