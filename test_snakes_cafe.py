@@ -8,7 +8,7 @@ def test_get_menu_items_from_valid_category():
     """
     test that items from the correct category are return when that category is input into the function
     """
-    assert snakes_cafe.get_menu_items_from_category('drinks') == ['coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi 151', 'code fellows tap water']
+    assert snakes_cafe.get_menu_items_from_category('drinks') == ['bud light', 'gargled lemonade', 'mango lassi', 'coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi', 'code fellows tap water',]
 
 
 def test_get_menu_items_from_invalid_category():
@@ -69,11 +69,8 @@ def test_make_list_of_keys_of_orders_greater_than_zero():
     snakes_cafe.menu['wings']['orders'] = 0
 
 
-# def test_no_orders_greater_than_zero_then_cannot_make_list():
-#     with pytest.raises(LookupError) as err:
-#         snakes_cafe.create_list_of_items_ordered()
-
-#     assert str(err.value) == 'Argument invalid. Must be not be an empty list.'
+def test_no_orders_greater_than_zero_then_cannot_make_list():
+    assert snakes_cafe.create_list_of_items_ordered() == []
 
 # print_category
 
@@ -82,7 +79,7 @@ def test_valid_category():
     """
     test that items from the correct category are return when that category is input into the function
     """
-    assert snakes_cafe.print_category('appetizers') == ['wings', 'cookies', 'spring rolls', 'brussel sprouts', 'brains', '6 compliments']
+    assert snakes_cafe.print_category('drinks') == ['bud light', 'gargled lemonade', 'mango lassi', 'coffee', 'tea', 'blood of the innocent', 'carp saliva', 'bacardi', 'code fellows tap water',]
 
 
 def test_invalid_category():
@@ -110,10 +107,7 @@ def test_cannot_remove_orders_less_than_zero():
     """
     handles exception if customer tries to remove an item order when it is already at 0
     """
-    with pytest.raises(ValueError) as err:
-        snakes_cafe.remove_single_order('remove wings')
-
-    assert str(err.value) == 'Cannot remove orders past 0.'
+    assert snakes_cafe.remove_single_order('remove wings') == 'wings'
 
 
 # get_current_subtotal
@@ -153,3 +147,14 @@ def test_invalid_sales_tax():
         snakes_cafe.get_sales_tax('car')
 
     assert str(err.value) == 'Argument invalid. Must be number.'
+
+
+# add_multiple_orders
+
+
+def test_add_multiple_orders_valid_int():
+    assert snakes_cafe.add_multiple_orders('5-wings') == ['5', 'wings']
+
+
+def test_add_multiple_orders_invalid_float():
+    assert snakes_cafe.add_multiple_orders('5.5-wings') is None

@@ -6,226 +6,271 @@ menu = {
         'category': 'appetizers',
         'orders': 0,
         'price': 10.00,
+        'stock': 10,
     },
     'cookies': {
         'category': 'appetizers',
         'orders': 0,
         'price': 2.00,
+        'stock': 10,
     },
     'spring rolls': {
         'category': 'appetizers',
         'orders': 0,
         'price': 7.00,
+        'stock': 10,
     },
     'brussel sprouts': {
         'category': 'appetizers',
         'orders': 0,
         'price': 6.00,
+        'stock': 10,
     },
     'brains': {
         'category': 'appetizers',
         'orders': 0,
         'price': 100.00,
+        'stock': 10,
     },
     '6 compliments': {
         'category': 'appetizers',
         'orders': 0,
         'price': 1.00,
+        'stock': 10,
     },
     'broccoli soup': {
         'category': 'appetizers',
         'orders': 0,
         'price': 5.00,
+        'stock': 10,
     },
     'bird eyes': {
         'category': 'appetizers',
         'orders': 0,
         'price': 37.00,
+        'stock': 10,
     },
     'fingernail nachos': {
         'category': 'appetizers',
         'orders': 0,
         'price': 15.00,
+        'stock': 10,
     },
     'whale': {
         'category': 'entrees',
         'orders': 0,
         'price': 100.00,
+        'stock': 10,
     },
     'dolphin': {
         'category': 'entrees',
         'orders': 0,
         'price': 70.00,
+        'stock': 10,
     },
     'turtle soup': {
         'category': 'entrees',
         'orders': 0,
         'price': 55.00,
+        'stock': 10,
     },
     'salmon': {
         'category': 'entrees',
         'orders': 0,
         'price': 20.00,
+        'stock': 10,
     },
     'steak': {
         'category': 'entrees',
         'orders': 0,
         'price': 30.00,
+        'stock': 10,
     },
     'meat tornado': {
         'category': 'entrees',
         'orders': 0,
         'price': 15.00,
+        'stock': 10,
     },
     'a literal garden': {
         'category': 'entrees',
         'orders': 0,
         'price': 12.00,
+        'stock': 10,
     },
     'cheeseburger': {
         'category': 'entrees',
         'orders': 0,
         'price': 10.00,
+        'stock': 10,
     },
     'lasagne': {
         'category': 'entrees',
         'orders': 0,
         'price': 14.00,
+        'stock': 10,
     },
     'pineapple wedges': {
         'category': 'sides',
         'orders': 0,
         'price': 7.00,
+        'stock': 10,
     },
     'seaweed salad': {
         'category': 'sides',
         'orders': 0,
         'price': 9.00,
+        'stock': 10,
     },
     'spring mix': {
         'category': 'sides',
         'orders': 0,
         'price': 7.00,
+        'stock': 10,
     },
     'cottage cheese': {
         'category': 'sides',
         'orders': 0,
         'price': 3.00,
+        'stock': 10,
     },
     'apple sauce': {
         'category': 'sides',
         'orders': 0,
         'price': 4.00,
+        'stock': 10,
     },
-    'over-ripe banana': {
+    'overripe banana': {
         'category': 'sides',
         'orders': 0,
         'price': 2.00,
+        'stock': 10,
     },
     'freedom fries': {
         'category': 'sides',
         'orders': 0,
         'price': 6.00,
+        'stock': 10,
     },
     'pickle': {
         'category': 'sides',
         'orders': 0,
         'price': 3.00,
+        'stock': 10,
     },
     'cabbage': {
         'category': 'sides',
         'orders': 0,
         'price': 5.00,
+        'stock': 10,
     },
     'birthday cake and song': {
         'category': 'desserts',
         'orders': 0,
         'price': 15.00,
+        'stock': 10,
     },
     'cherry pie': {
         'category': 'desserts',
         'orders': 0,
         'price': 9.00,
+        'stock': 10,
     },
     'cheesecake': {
         'category': 'desserts',
         'orders': 0,
         'price': 8.00,
+        'stock': 10,
     },
     'ice cream': {
         'category': 'desserts',
         'orders': 0,
         'price': 7.00,
+        'stock': 10,
     },
     'cake': {
         'category': 'desserts',
         'orders': 0,
         'price': 3.00,
+        'stock': 10,
     },
     'pie': {
         'category': 'desserts',
         'orders': 0,
         'price': 5.00,
+        'stock': 10,
     },
     'chocolate spaghetti': {
         'category': 'desserts',
         'orders': 0,
         'price': 15.00,
+        'stock': 10,
     },
     'foot massage': {
         'category': 'desserts',
         'orders': 0,
         'price': 30.00,
+        'stock': 10,
     },
     'coconut ice cream': {
         'category': 'desserts',
         'orders': 0,
         'price': 5.00,
+        'stock': 10,
     },
     'bud light': {
         'category': 'drinks',
         'orders': 0,
         'price': 3.00,
+        'stock': 10,
     },
     'gargled lemonade': {
         'category': 'drinks',
         'orders': 0,
         'price': 8.00,
+        'stock': 10,
     },
     'mango lassi': {
         'category': 'drinks',
         'orders': 0,
         'price': 9.00,
+        'stock': 10,
     },
     'coffee': {
         'category': 'drinks',
         'orders': 0,
         'price': 3.00,
+        'stock': 10,
     },
     'tea': {
         'category': 'drinks',
         'orders': 0,
         'price': 3.00,
+        'stock': 10,
     },
     'blood of the innocent': {
         'category': 'drinks',
         'orders': 0,
         'price': 50.00,
+        'stock': 10,
     },
     'carp saliva': {
         'category': 'drinks',
         'orders': 0,
         'price': 25.00,
+        'stock': 10,
     },
-    'bacardi 151': {
+    'bacardi': {
         'category': 'drinks',
         'orders': 0,
         'price': 9.00,
+        'stock': 10,
     },
     'code fellows tap water': {
         'category': 'drinks',
         'orders': 0,
         'price': 1.00,
+        'stock': 10,
     },
 }
 
@@ -257,6 +302,9 @@ def print_header():
 **                                          **
 **      To see your order, type "order"     **
 **     To quit at any time, type "quit"     **
+**  To remove an item, type "remove (item)" **
+**        To order multiple items,          **
+**         type "#-(item name)"             **
 **********************************************
         '''
     )
@@ -305,30 +353,43 @@ def print_category(cat):
     return testing_key_list
 
 
-def place_order(user_input):
-    pass
-    # inside here we will add the functionality of incrementing orders made inside function
-    # if no int in user input
-    #   check if item stock is > 0
-    #   if so increment stock -= 1
-    #   orders += 1
-    #   return orders
-    # if int in user input
-    #   check if item stock - int >= 0
-    #   if so -= stock by int
-    #   order += int
-
 def remove_single_order(full_remove_string):
     """
     This function removes an order from a menu item when prompted
     """
+    # try:
     for key in menu.keys():
+        # try:
         if key in full_remove_string:
             if menu[key]['orders'] > 0:
                 menu[key]['orders'] -= 1
+                menu[key]['stock'] += 1
+                key_of_order_removed = key
+                print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
                 return key
             else:
-                raise ValueError('Cannot remove orders past 0.')
+                print('\nCannot remove orders past 0')
+                return key
+    print("\nTo remove an item enter 'remove (item name)'")
+
+
+def add_multiple_orders(user_input_prm):
+    """
+    This function allows the user to add multiple orders
+    """
+    try: 
+        user_input_list = user_input_prm.split('-')
+        if (menu[user_input_list[1].lower()]['stock'] - int(user_input_list[0])) >= 0:
+            menu[user_input_list[1].lower()]['orders'] += int(user_input_list[0])
+            menu[user_input_list[1].lower()]['stock'] -= int(user_input_list[0])
+            print('\n** {1} orders of {0} have been added to your meal and your total is ${2} **'.format(user_input_list[1].title(), user_input_list[0], get_current_subtotal()))
+            return user_input_list
+        else:
+            print('\nSorry quantity exceeds our stock for that item')
+    except ValueError:
+        print('\nSorry, we do not know what you mean, use format #-items')
+    except KeyError:
+        print('\nSorry, we do not know what you mean, use format #-items')
 
 
 def user_prompt():
@@ -354,13 +415,16 @@ def user_prompt():
         elif user_input in list_of_menu_categories:
             print_category(user_input)
         elif 'remove ' in user_input:
-            key_of_order_removed = remove_single_order(user_input)
-            print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
+            remove_single_order(user_input)
         elif user_input.lower() in menu.keys():
-            ## Create contained function for this
-            menu[user_input.lower()]['orders'] += 1
-            # current_order_subtotal = get_total_price_before_tax(current_order_subtotal, user_input.lower())
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2:.2f} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+            if menu[user_input]['stock'] > 0:
+                menu[user_input.lower()]['orders'] += 1
+                menu[user_input.lower()]['stock'] -= 1
+                print('\n** 1 order of {0} has been added to your meal and your total is ${2:.2f} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+            else:
+                print('\nSorry quantity exceeds our stock for that item')
+        elif '-' in user_input:
+            add_multiple_orders(user_input)
         else:
             print('\nSorry we don\'t carry', user_input)
 
@@ -373,15 +437,6 @@ def get_current_subtotal():
     for key in menu:
         subtotal += menu[key]['orders'] * menu[key]['price']
     return subtotal
-
-
-# def get_total_price_before_tax(subtotal, ordered_item):
-#     if ordered_item is '':
-#         raise SyntaxError('Argument invalid. Must be not be an empty string.')
-#     if ordered_item not in menu.keys():
-#         raise LookupError('Argument invalid. Must be valid menu item from menu dict.')
-#     subtotal += menu[ordered_item]['price']
-#     return subtotal
 
 
 def create_list_of_items_ordered():
@@ -434,7 +489,9 @@ Order #{}
     return reciept_string
 
 if __name__ == '__main__':
-    main()
-
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(" <-- It's 'quit' asshole. Read the directions.")
 
 
