@@ -311,7 +311,7 @@ def get_alt_menu(file_path_input):
     """
     global menu
     alt_menu = {}
-    # './alt_menu.csv'
+    # './alt_menu.csv'  
     try:
         with open(file_path_input, 'r') as f:
             output = csv.reader(f)
@@ -346,8 +346,8 @@ def print_header():
 **      To see your order, type "order"     **
 **     To quit at any time, type "quit"     **
 **  To remove an item, type "remove (item)" **
-**        To order multiple items,          **
-**         type "#-(item name)"             **
+**         To order multiple items,         **
+**           type "#-(item name)"           **
 **********************************************
         '''
     )
@@ -535,7 +535,7 @@ Order #{}
 if __name__ == '__main__':
     try:
         main()
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print(" <-- It's 'quit' asshole. Read the directions.")
 
 
