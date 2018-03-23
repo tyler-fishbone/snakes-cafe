@@ -1,7 +1,7 @@
-wings, appetizers, 0, 10.00, 10
-koolaid, drinks, 0, 2.00, 10
-popcorn, appetizers, 0, 3.00, 10
-chicken, entrees, 0, 15.00, 10
-chili con carne, entrees, 0, 9.00, 10
-dried pineapple, desserts, 0, 4.00, 10
-tree bark, sides, 0, 6.00, 10
+wings,appetizers,10.00,10
+koolaid,drinks,2.00,10
+popcorn,appetizers,3.00,10
+chicken,entrees,15.00,10
+chili con carne,entrees,9.00,10
+dried pineapple,desserts,4.00,10
+tree bark,sides,6.00,10

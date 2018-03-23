@@ -164,3 +164,28 @@ def test_add_multiple_orders_invalid_float():
     asserts floats cannot be used as values to add
     """
     assert snakes_cafe.add_multiple_orders('5.5-wings') is None
+
+
+# get_alt_menu
+
+
+def test_get_alt_menu_with_valid_filepath():
+    """
+    asserts that menu returned is from input csv file
+    """
+    assert snakes_cafe.get_alt_menu('./alt_menu.csv') == {'wings': {'category': 'appetizers', 'orders': 0, 'price': 10.0, 'stock': 10}, 'koolaid': {'category': 'drinks', 'orders': 0, 'price': 2.0, 'stock': 10}, 'popcorn': {'category': 'appetizers', 'orders': 0, 'price': 3.0, 'stock': 10}, 'chicken': {'category': 'entrees', 'orders': 0, 'price': 15.0, 'stock': 10}, 'chili con carne': {'category': 'entrees', 'orders': 0, 'price': 9.0, 'stock': 10}, 'dried pineapple': {'category': 'desserts', 'orders': 0, 'price': 4.0, 'stock': 10}, 'tree bark': {'category': 'sides', 'orders': 0, 'price': 6.0, 'stock': 10}}
+
+
+def test_get_alt_menu_with_invalid_filepath():
+    """
+    asserts that menu returned is from a nonexistent file path returns none
+    """
+    assert snakes_cafe.get_alt_menu('hsdfl') is None
+
+
+def test_get_alt_menu_with_invalid_csv_format():
+    """
+    asserts that menu returned is from a non csv file returns none
+    """
+    assert snakes_cafe.get_alt_menu('./test_plan.md') is None
+

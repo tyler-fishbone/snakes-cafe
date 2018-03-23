@@ -276,20 +276,61 @@ menu = {
 }
 
 user_uuid = uuid.uuid4()
-list_of_menu_categories = ['appetizers', 'entrees', 'sides', 'desserts', 'drinks']
+set_of_menu_categories = set()
 
 
 def main():
     """
     This function is here to kick off the application
     """
-    get_alt_menu()
+    new_menu_or_default()
     print_whole_menu()
     user_prompt()
 
 
-def extend_menu():
-    pass
+def new_menu_or_default():
+    """
+    gives the user an option to put in their own menu
+    """
+    global set_of_menu_categories
+    print('Would you like to use our default menu or enter your own? \
+    \n If you would like to use your own please enter a valid file path to the csv. \
+    \n If not, just press "enter"')
+    user_menu_input = input('>  ')
+    if user_menu_input == '':
+        print('Continuing with default menu')
+    else:
+        get_alt_menu(user_menu_input)
+    set_of_menu_categories = {data['category'] for data in menu.values()}
+
+
+def get_alt_menu(file_path_input):
+    """
+    function that reads input csv file at inputted path and creates a dict from it
+    then replaces the default menu with that valye
+    """
+    global menu
+    alt_menu = {}
+    # './alt_menu.csv'
+    try:
+        with open(file_path_input, 'r') as f:
+            output = csv.reader(f)
+            for row in output:
+                print(row)
+                alt_menu[row[0]] = {
+                            'category': row[1],
+                            'orders': 0,
+                            'price': float(row[2]),
+                            'stock': int(row[3]),
+                        }
+            menu = alt_menu
+            return menu
+    except FileNotFoundError:
+        print('\nNot a valid filepath, going ahead with default menu')
+    except IndexError:
+        print('\nNot a valid file format, going ahead with default menu')
+
+        
 
 
 def print_header():
@@ -332,7 +373,7 @@ def print_whole_menu():
     This function prints all of the menu items for each category
     """
     print_header()
-    for item in list_of_menu_categories:
+    for item in set_of_menu_categories:
         print_category(item)
 
 
@@ -414,7 +455,7 @@ def user_prompt():
             print(create_reciept(get_current_subtotal()))
         elif user_input == 'menu':
             print_whole_menu()
-        elif user_input in list_of_menu_categories:
+        elif user_input in set_of_menu_categories:
             print_category(user_input)
         elif 'remove ' in user_input:
             remove_single_order(user_input)
@@ -461,24 +502,6 @@ def get_sales_tax(subtotal):
     if type(subtotal) is str:
         raise TypeError('Argument invalid. Must be number.')
     return subtotal * .101
-
-
-def get_alt_menu():
-    alt_menu = {}
-    with open('./alt_menu.csv', 'r') as f:
-        output = csv.reader(f)
-        for row in output:
-            print(row)
-            alt_menu += {
-                    row[0]: {
-                        'category': row[1],
-                        'orders': int(row[2]),
-                        'price': float(row[3]),
-                        'stock': int(row[4]),
-                    }
-                }
-        # alt_menu = {rows[0]:rows[1] for rows in output}
-
     return output
 
 
