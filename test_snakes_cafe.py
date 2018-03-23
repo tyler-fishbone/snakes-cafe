@@ -69,11 +69,8 @@ def test_make_list_of_keys_of_orders_greater_than_zero():
     snakes_cafe.menu['wings']['orders'] = 0
 
 
-# def test_no_orders_greater_than_zero_then_cannot_make_list():
-#     with pytest.raises(LookupError) as err:
-#         snakes_cafe.create_list_of_items_ordered()
-
-#     assert str(err.value) == 'Argument invalid. Must be not be an empty list.'
+def test_no_orders_greater_than_zero_then_cannot_make_list():
+    assert snakes_cafe.create_list_of_items_ordered() == []
 
 # print_category
 
@@ -110,10 +107,7 @@ def test_cannot_remove_orders_less_than_zero():
     """
     handles exception if customer tries to remove an item order when it is already at 0
     """
-    with pytest.raises(ValueError) as err:
-        snakes_cafe.remove_single_order('remove wings')
-
-    assert str(err.value) == 'Cannot remove orders past 0.'
+    assert snakes_cafe.remove_single_order('remove wings') == 'wings'
 
 
 # get_current_subtotal

@@ -302,6 +302,9 @@ def print_header():
 **                                          **
 **      To see your order, type "order"     **
 **     To quit at any time, type "quit"     **
+**  To remove an item, type "remove (item)" **
+**        To order multiple items,          **
+**         type "#-(item name)"             **
 **********************************************
         '''
     )
@@ -364,16 +367,11 @@ def remove_single_order(full_remove_string):
                 key_of_order_removed = key
                 print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
                 return key
-    print("\n To remove an item enter 'remove (item name)'")
-                    # return key
-        #         else:
-        #             raise ValueError('Cannot remove orders past 0.')
-        #     else:
-        #         raise LookupError('lookup error text')
-        # except Exception as err:
-        #     print(err) 
-            # print('Hit else')
-        # c
+            else:
+                print('\nCannot remove orders past 0')
+                return key
+    print("\nTo remove an item enter 'remove (item name)'")
+
 
 def add_multiple_orders(user_input_prm):
     """
@@ -381,11 +379,13 @@ def add_multiple_orders(user_input_prm):
     """
     try: 
         user_input_list = user_input_prm.split('-')
-        if (menu[user_input_list[1].lower()]['stock'] - int(user_input_list[0])) > 0:
+        if (menu[user_input_list[1].lower()]['stock'] - int(user_input_list[0])) >= 0:
             menu[user_input_list[1].lower()]['orders'] += int(user_input_list[0])
             menu[user_input_list[1].lower()]['stock'] -= int(user_input_list[0])
             print('\n** {1} orders of {0} have been added to your meal and your total is ${2} **'.format(user_input_list[1].title(), user_input_list[0], get_current_subtotal()))
             return user_input_list
+        else:
+            print('\nSorry quantity exceeds our stock for that item')
     except ValueError:
         print('\nSorry, we do not know what you mean, use format #-items')
     except KeyError:
@@ -416,11 +416,13 @@ def user_prompt():
             print_category(user_input)
         elif 'remove ' in user_input:
             remove_single_order(user_input)
-            # print('\n** 1 order of {0} has been removed from your meal and your total is ${1:.2f} **'.format(key_of_order_removed.title(), get_current_subtotal()))
         elif user_input.lower() in menu.keys():
-            menu[user_input.lower()]['orders'] += 1
-            menu[user_input.lower()]['stock'] -= 1
-            print('\n** {1} order of {0} have been added to your meal and your total is ${2:.2f} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+            if menu[user_input]['stock'] > 0:
+                menu[user_input.lower()]['orders'] += 1
+                menu[user_input.lower()]['stock'] -= 1
+                print('\n** 1 order of {0} has been added to your meal and your total is ${2:.2f} **'.format(user_input.title(), menu[user_input.lower()]['orders'], get_current_subtotal()))
+            else:
+                print('\nSorry quantity exceeds our stock for that item')
         elif '-' in user_input:
             add_multiple_orders(user_input)
         else:
@@ -435,15 +437,6 @@ def get_current_subtotal():
     for key in menu:
         subtotal += menu[key]['orders'] * menu[key]['price']
     return subtotal
-
-
-# def get_total_price_before_tax(subtotal, ordered_item):
-#     if ordered_item is '':
-#         raise SyntaxError('Argument invalid. Must be not be an empty string.')
-#     if ordered_item not in menu.keys():
-#         raise LookupError('Argument invalid. Must be valid menu item from menu dict.')
-#     subtotal += menu[ordered_item]['price']
-#     return subtotal
 
 
 def create_list_of_items_ordered():
@@ -496,7 +489,9 @@ Order #{}
     return reciept_string
 
 if __name__ == '__main__':
-    main()
-
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(" <-- It's 'quit' asshole. Read the directions.")
 
 
