@@ -377,10 +377,16 @@ class Order:
         self.set_of_menu_categories = set()
 
     def __len__(self):
+        """
+        This function shows the total items when len() is called on the instance
+        """
         return self.total_items()
 
     def __repr__(self):
-        return '<Order #{} | Items: {} | Total: {}>'.format(self.user_uuid, len(self), self.get_current_subtotal() + self.get_sales_tax(get_current_subtotal()))
+        """
+        This function shows a specific string when repr is used
+        """
+        return '<Order #{} | Items: {} | Total: {}>'.format(self.user_uuid, len(self), self.get_current_subtotal() + self.get_sales_tax(self.get_current_subtotal()))
 
     def __str__(self):
         return print(self.display_order(self.get_current_subtotal()))
