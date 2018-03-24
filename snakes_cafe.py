@@ -392,7 +392,7 @@ class Order:
         """
         This function shows the reciept what the instance is printed
         """
-        return print(self.display_order(self.get_current_subtotal()))
+        return self.display_order(self.get_current_subtotal())
 
     def main(self):
         """
@@ -535,12 +535,16 @@ class Order:
         """
         This function adds and item when prompted
         """
-        if self.menu[user_input_prm]['stock'] > 0:
-            self.menu[user_input_prm.lower()]['orders'] += 1
-            self.menu[user_input_prm.lower()]['stock'] -= 1
-            print('\n** 1 order of {0} has been added to your meal and your total is ${2:.2f} **'.format(user_input_prm.title(), self.menu[user_input_prm.lower()]['orders'], self.get_current_subtotal()))
-        else:
-            print('\nSorry quantity exceeds our stock for that item')
+        try:
+            if self.menu[user_input_prm]['stock'] > 0:
+                self.menu[user_input_prm.lower()]['orders'] += 1
+                self.menu[user_input_prm.lower()]['stock'] -= 1
+                print('\n** 1 order of {0} has been added to your meal and your total is ${2:.2f} **'.format(user_input_prm.title(), self.menu[user_input_prm.lower()]['orders'], self.get_current_subtotal()))
+                return user_input_prm
+            else:
+                print('\nSorry quantity exceeds our stock for that item')
+        except KeyError:
+            print('Sorry that\'s not something we carry.')
 
     def add_multiple_orders(self, user_input_prm):
         """
@@ -620,7 +624,7 @@ class Order:
         """
         total = 0
         for key in self.menu:
-            total += key['orders']
+            total += self.menu[key]['orders']
         return total
 
     def get_sales_tax(self, subtotal):
